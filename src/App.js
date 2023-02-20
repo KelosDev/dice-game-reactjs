@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './App.css';
 import Button from './components/Button';
-// import DiceImage1 from './images/Dice1.png'
+import DiceImage1 from './images/Dice1.png'
 import DiceImage2 from './images/Dice2.png'
 import DiceImage3 from './images/Dice3.png'
 import DiceImage4 from './images/Dice4.png'
@@ -11,18 +11,18 @@ import DiceImage6 from './images/Dice6.png'
 function App() {
 
   const diceImages = [
-    'https://cdn.pixabay.com/photo/2013/07/12/17/39/dice-152173_960_720.png',
-    'https://cdn.pixabay.com/photo/2014/04/03/11/56/dice-312627_960_720.png',
-    'https://cdn.pixabay.com/photo/2014/04/03/11/56/dice-312624_960_720.png',
-    'https://cdn.pixabay.com/photo/2014/04/03/10/24/dice-310335_960_720.png',
-    'https://cdn.pixabay.com/photo/2014/04/03/11/56/dice-312622_960_720.png',
-    'https://cdn.pixabay.com/photo/2014/04/03/10/24/dice-310333_960_720.png',
-    // DiceImage1,
-    // DiceImage2,
-    // DiceImage3,
-    // DiceImage4,
-    // DiceImage5,
-    // DiceImage6,
+    // 'https://cdn.pixabay.com/photo/2013/07/12/17/39/dice-152173_960_720.png',
+    // 'https://cdn.pixabay.com/photo/2014/04/03/11/56/dice-312627_960_720.png',
+    // 'https://cdn.pixabay.com/photo/2014/04/03/11/56/dice-312624_960_720.png',
+    // 'https://cdn.pixabay.com/photo/2014/04/03/10/24/dice-310335_960_720.png',
+    // 'https://cdn.pixabay.com/photo/2014/04/03/11/56/dice-312622_960_720.png',
+    // 'https://cdn.pixabay.com/photo/2014/04/03/10/24/dice-310333_960_720.png',
+    DiceImage1,
+    DiceImage2,
+    DiceImage3,
+    DiceImage4,
+    DiceImage5,
+    DiceImage6,
   ]
 
   const [diceCount, setDiceCount] = useState(5)
