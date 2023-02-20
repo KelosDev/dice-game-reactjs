@@ -19,41 +19,52 @@ function App() {
     DiceImage6,
   ]
 
-  const [image, setImage] = useState(diceImages[0])
-  const [image2, setImage2] = useState(diceImages[1])
-  const [image3, setImage3] = useState(diceImages[1])
-  const [image4, setImage4] = useState(diceImages[1])
-  const [image5, setImage5] = useState(diceImages[1])
+  const [diceCount, setDiceCount] = useState(5)
+  const [diceStates, setDiceStates] = useState(
+    Array(diceCount).fill({ rolled: true })
+  )
 
   const rollDiceButton = () => {
-    const randomNum1 = Math.floor(Math.random() * 6)
-    const randomNum2 = Math.floor(Math.random() * 6)
-    const randomNum3 = Math.floor(Math.random() * 6)
-    const randomNum4 = Math.floor(Math.random() * 6)
-    const randomNum5 = Math.floor(Math.random() * 6)
-    setImage(diceImages[randomNum1])
-    setImage2(diceImages[randomNum2])
-    setImage3(diceImages[randomNum3])
-    setImage4(diceImages[randomNum4])
-    setImage5(diceImages[randomNum5])
-  }
+    const newDiceStates = diceStates.map((diceState) => ({
+      rolled: true,
+    }));
+    setDiceStates(newDiceStates);
+  };
 
   const addDiceButton = () => {
-  }
+    if (diceCount < 5) {
+
+      setDiceCount((prevCount) => {
+        const newDiceStates = diceStates.slice();
+        newDiceStates.push({ rolled: false });
+        setDiceStates(newDiceStates);
+        return prevCount + 1;
+      });
+    }
+  };
 
   const removeDiceButton = () => {
-
-  }
+    if (diceCount > 1) {
+      setDiceCount((prevCount) => {
+        const newDiceStates = diceStates.slice(0, prevCount - 1);
+        setDiceStates(newDiceStates);
+        return prevCount - 1;
+      });
+    }
+  };
 
   return (
     <div className="App">
       <h1>Perudo</h1>
 
-      <img src={image}></img>
-      <img src={image2}></img>
-      <img src={image3}></img>
-      <img src={image4}></img>
-      <img src={image5}></img>
+      {diceStates.map((diceState, index) => (
+        <img
+          style={{ width: '150px', height: '150px' }}
+          key={index}
+          src={diceState.rolled ? diceImages[Math.floor(Math.random() * 6)] : diceImages[0]}
+          alt={`Dice ${index + 1}`}
+        />
+      ))}
 
       <Button handleClick={rollDiceButton}>Roll</Button>
       <Button handleClick={addDiceButton}>add</Button>
